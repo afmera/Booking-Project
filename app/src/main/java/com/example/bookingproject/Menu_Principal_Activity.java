@@ -2,6 +2,7 @@ package com.example.bookingproject;
 
 import android.os.Bundle;
 
+import com.example.bookingproject.vector.Vector;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,15 +21,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 
-public class Menu_Principal_Activity extends AppCompatActivity {
+public class Menu_Principal_Activity extends AppCompatActivity implements View.OnClickListener {
 
     private AppBarConfiguration mAppBarConfiguration;
+    TextView textView_NombreUsuario, textView_CorreoUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu__principal_);
+
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -65,5 +71,21 @@ public class Menu_Principal_Activity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onClick(View v) {
+        agregarValoresUsuario();
+    }
+
+    private void agregarValoresUsuario() {
+        Vector vector = new Vector();
+        String nombUsuario = vector.getPersonaNombre();
+        System.out.println(nombUsuario);
+        if (nombUsuario.length() > 0) {
+            textView_NombreUsuario.setText(nombUsuario);
+        } else {
+            textView_NombreUsuario.setText("Desconocido");
+        }
     }
 }

@@ -130,7 +130,8 @@ public class Google_Activity extends AppCompatActivity implements GoogleApiClien
                     acct.zab(),
                     acct.zac());
             Vector entity=new Vector();
-            entity.crear(persona);
+            entity.crearPersona();
+            entity.agregarPersona(persona);
             //Ago una lista de una clase determinada para pasar los datos obtenidos.
             /*Lista.lista_persona.add(new Persona(
                     acct.getDisplayName(),
